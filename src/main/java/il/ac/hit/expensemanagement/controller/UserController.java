@@ -117,5 +117,8 @@ public class UserController extends AbstractController {
 
     public void home(HttpServletRequest request, HttpServletResponse response) {
     }
-
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
+       request.getSession().setAttribute("user",null);
+    }
+    
 }

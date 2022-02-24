@@ -34,6 +34,8 @@
            data-role="button" data-icon="grid" data-theme="b">table Items</a>
         <a href="${pageContext.request.contextPath}/router/user/add"
            data-role="button" data-icon="grid" data-theme="b">add</a>
+        <a href="${pageContext.request.contextPath}/router/user/logout"
+           data-role="button" data-icon="grid" data-theme="b">log-out</a>
     </div>
 </div>
 
