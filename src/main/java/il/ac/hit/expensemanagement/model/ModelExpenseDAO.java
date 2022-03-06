@@ -259,13 +259,15 @@ public class ModelExpenseDAO implements IModelExpenseDAO {
     @Override
     public Boolean checkExistingUserName(String userName) throws ExpenseManagerException {
         Session session = null;
-        boolean bool = true;
+        boolean bool = false;
 
         try {
             session = factory.openSession();
 
-            //  List<User> users = anotherSession.createQuery("from User where userName = 'dudi'").list();
             List<User> users = session.createQuery("from User").list();
+            // if empty return false
+            if(users.size() == 0)
+                return false;
 
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i).getUserName().equals(userName)) {
@@ -293,11 +295,14 @@ public class ModelExpenseDAO implements IModelExpenseDAO {
     @Override
     public Boolean login(User user) throws ExpenseManagerException {
         Session session = null;
-        boolean bool = true;
+        boolean bool = false;
 
         try {
             session = factory.openSession();
             List<User> users = session.createQuery("from User").list();
+            // if empty return false
+            if(users.size() == 0)
+                return false;
 
             for (int i = 0; i < users.size(); i++) {
                 if (users.get(i).getUserName().equals(user.getUserName()) &&
